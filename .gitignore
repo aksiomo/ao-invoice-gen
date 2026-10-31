@@ -1,2 +1,22 @@
-# Pythone venv
+# Python venv
 .python/*
+
+# 运行期产物
+.ruff_cache/*
+storage/uploads/*
+storage/generated/*
+!storage/**/.gitkeep
+
+# 商品分类缓存（按商品名累积，属于本地数据）
+data/cache.sqlite
+
+# 环境变量
+.env
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Windows 下载标记（NTFS 备用数据流）
+*:Zone.Identifier
