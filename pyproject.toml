@@ -1,0 +1,11 @@
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "BLE"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"app/pipeline.py" = ["BLE001"]
+"tests/*" = ["BLE001"]

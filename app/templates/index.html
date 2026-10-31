@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>发票开具项目信息生成器</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>发票开具项目信息生成器</h1>
+    <p class="subtitle">上传采购/入库 Excel，自动生成电子税务局《发票开具项目信息导入模板》</p>
+
+    <section class="card">
+      <label id="dropzone" class="dropzone">
+        <input type="file" id="fileInput" accept=".xls,.xlsx,.XLS,.XLSX" hidden>
+        <span id="dropText">点击选择或拖入采购入库单（.xls / .xlsx）</span>
+      </label>
+      <button id="generateBtn" disabled>生成</button>
+    </section>
+
+    <section id="statusCard" class="card hidden">
+      <div class="status-line">
+        <span id="stageBadge" class="badge">排队中</span>
+        <span id="statusMessage"></span>
+      </div>
+      <div class="stats">
+        <div><strong id="statTotal">-</strong><span>明细行</span></div>
+        <div><strong id="statUnique">-</strong><span>商品种类</span></div>
+        <div><strong id="statCache">-</strong><span>缓存命中</span></div>
+      </div>
+      <div id="warnings" class="warnings"></div>
+      <div id="errorBox" class="error hidden"></div>
+    </section>
+
+    <section id="resultCard" class="card hidden">
+      <h2>分类结果核对</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th><th>规格型号（商品名原文）</th><th>项目名称（分类名称）</th>
+              <th>税收分类编码</th><th>单位</th><th>数量</th><th>单价</th><th>金额</th>
+              <th>税率</th><th>来源</th>
+            </tr>
+          </thead>
+          <tbody id="resultBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
